@@ -8,6 +8,11 @@ int partition (int arr[], int low, int high);
 void swap(int *num1, int *num2);
 int min(int arr[], int n);
 int max(int arr[], int n);
+int frequency(int arr[], int n, int k);
+int lcmUtility(int num1, int num2);
+int hcfUtility(int num1, int num2);
+int lcm(int arr[], int n);
+int hcf(int arr[], int n);
 
 
 /*
@@ -136,5 +141,62 @@ int max(int arr[], int n)
     return maximum;
 }
 
+/*
+Returns the frequency of an element in an array
+*/
+int frequency(int arr[], int n, int k)
+{
+    int count=0, index;
+    for(index=0; index<n ;index++)
+    {
+        if(arr[index]==k)
+            count++;
+    }
+    return count;
+}
 
+/*
+Returns the HCF of two numbers
+*/
+int hcfUtility(int num1, int num2)
+{
+    if(num2==0)
+        return num1;
+    else
+        hcfUtility(num2, num1%num2);
+}
+
+/*
+Returns the LCM of two numbers
+*/
+int lcmUtility(int num1, int num2)
+{
+    return (num1 * num2) / hcfUtility(num1, num2);
+}
+
+/*
+Returns the HCF of the entire array
+*/
+int hcf(int arr[], int n)
+{
+    int safe = hcfUtility(arr[0], arr[1]), index;
+    for(index=2; index<n; index++)
+    {
+        safe = hcfUtility(arr[index], safe);
+    }
+    return safe;
+}
+
+/*
+Returns the LCM of the entire array
+*/
+int lcm(int arr[], int n)
+{
+    int safe = lcmUtility(arr[0], arr[1]), index;
+    for(index=2; index<n; index++)
+    {
+        safe = lcmUtility(arr[index], safe);
+    }
+    return safe;
+}
 
