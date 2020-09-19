@@ -11,8 +11,8 @@ int max(int arr[], int n);
 int frequency(int arr[], int n, int k);
 int lcmUtility(int num1, int num2);
 int hcfUtility(int num1, int num2);
-int lcm(int arr[], int n);
-int hcf(int arr[], int n);
+int lcmOfArray(int arr[], int n);
+int gcdOfArray(int arr[], int n);
 
 
 /*
@@ -158,12 +158,12 @@ int frequency(int arr[], int n, int k)
 /*
 Returns the HCF of two numbers
 */
-int hcfUtility(int num1, int num2)
+int gcdUtility(int num1, int num2)
 {
     if(num2==0)
         return num1;
     else
-        hcfUtility(num2, num1%num2);
+        gcdUtility(num2, num1%num2);
 }
 
 /*
@@ -171,18 +171,18 @@ Returns the LCM of two numbers
 */
 int lcmUtility(int num1, int num2)
 {
-    return (num1 * num2) / hcfUtility(num1, num2);
+    return (num1 * num2) / gcdUtility(num1, num2);
 }
 
 /*
 Returns the HCF of the entire array
 */
-int hcf(int arr[], int n)
+int gcdOfArray(int arr[], int n)
 {
-    int safe = hcfUtility(arr[0], arr[1]), index;
+    int safe = gcdUtility(arr[0], arr[1]), index;
     for(index=2; index<n; index++)
     {
-        safe = hcfUtility(arr[index], safe);
+        safe = gcdUtility(arr[index], safe);
     }
     return safe;
 }
@@ -190,7 +190,7 @@ int hcf(int arr[], int n)
 /*
 Returns the LCM of the entire array
 */
-int lcm(int arr[], int n)
+int lcmOfArray(int arr[], int n)
 {
     int safe = lcmUtility(arr[0], arr[1]), index;
     for(index=2; index<n; index++)
