@@ -1,5 +1,7 @@
 #include<math.h>
+
 typedef long long int LLI;
+
 LLI reverse(LLI num);
 int sumOfDigits(LLI num);
 bool isPrime(LLI num);
@@ -49,12 +51,19 @@ bool isPrime(LLI num)
     return true;
 }
 
+/*
+Returns the Greatest Common Divisor of the given number
+*/
 int gcd(LLI num1, LLI num2)
 {
     if(num2==0)
         return num1;
     else gcd(num2, num1%num2);
 }
+
+/*
+Returns the Least Common Multiple of a given number
+*/
 int lcm(LLI num1, LLI num2)
 {
     return (num1 * num2) / gcd(num1, num2);
