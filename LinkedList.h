@@ -1,4 +1,12 @@
 #include<iostream>
+#include<string>
+typedef long long int LLI;
+
+struct array
+{
+    int size;
+    int *arr;
+};
 
 class Node
 {
@@ -18,11 +26,20 @@ public:
     ~LinkedList();
     void add(int new_data);
     void add(int pos, int new_data);
+    void clear();
+    bool contains(int data);
+    LLI get(int index);
+    LLI getFirst();
+    LLI getLast();
+    LLI getMiddle();
+    int printList();
     void removeFirst();
     void removeLast();
     void removeAt(int pos);
-    void clear();
-    void printList();
+    void reverse();
+    int size();
+    array toArray();
+    std::string toString();
 };
 
 LinkedList::LinkedList()
@@ -32,6 +49,8 @@ LinkedList::LinkedList()
 
 LinkedList::~LinkedList()
 {
+    if(!this->head)
+        free(this->head);
 }
 
 /*
@@ -92,12 +111,107 @@ void LinkedList::add(int pos, int new_data)
         }
     }
 }
+
+/*
+Deletes the entire linked list
+*/
+void LinkedList::clear()
+{
+    Node *temp, *next_node;
+    temp = this->head;
+    while(temp!=NULL)
+    {
+        next_node = temp->next;
+        free(temp);
+        temp = next_node;
+    }
+    this->head = NULL;
+}
+
+
+/*
+Returns true if the list contains the specified element
+*/
+bool LinkedList::contains(int data)
+{
+    Node *temp;
+    temp = this->head;
+    while(temp!=NULL)
+    {
+        if(temp->data == data)
+            return true;
+        temp = temp->next;
+    }
+    return false;
+}
+
+/*
+Returns the element at the specified position
+*/
+LLI LinkedList::get(int index)
+{
+    int ctr=0;
+    Node *temp;
+    temp = this->head;
+    while(temp!=NULL)
+    {
+        ctr++;
+        if(ctr==index)
+            return temp->data;
+        temp = temp->next;
+    }
+    return -1;
+}
+
+/*
+Returns the First element of the list
+*/
+LLI LinkedList::getFirst()
+{
+    if(!this->head) return -1;
+    return this->head->data;
+}
+
+/*
+Returns the Last element of the list
+*/
+LLI LinkedList::getLast()
+{
+    Node *temp;
+    temp = head;
+    while(temp->next!=NULL)
+        temp = temp->next;
+    return temp->data;
+}
+
+/*
+Returns the middle element of the linked list
+*/
+LLI LinkedList::getMiddle()
+{
+    Node *first=NULL, *second=NULL, *temp;
+    temp = this->head;
+    if(!temp) return -1;
+    first = second = temp;
+    while(second && second->next)
+    {
+        first = first->next;
+        second = second->next;
+        if(second)
+            second = second->next;
+    }
+
+    return first->data;
+}
+
+
 /*
 prints the data in the linked list
 */
-void LinkedList::printList()
+int LinkedList::printList()
 {
     Node *temp;
+    int ctr = 0;
     temp = this->head;
     if(temp==NULL)
         std::cout<<"Error: Nothing to print. LinkedList is empty!\n";
@@ -105,9 +219,11 @@ void LinkedList::printList()
         while(temp!=NULL)
         {
             std::cout<<temp->data<<" ";
+            ctr++;
             temp = temp->next;
         }
     }
+    return ctr;
 }
 
 /*
@@ -188,18 +304,74 @@ void LinkedList::removeAt(int pos)
 }
 
 /*
-Deletes the entire linked list
+Reverses the linked list
 */
-void LinkedList::clear()
+void LinkedList::reverse()
 {
-    Node *temp, *next_node;
+    Node *curr, *prev=NULL, *next=NULL;
+    curr = this->head;
+    while(curr!=NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    this->head = prev;
+}
+
+/*
+Returns the size of the linked list
+*/
+int LinkedList::size()
+{
+    Node *temp;
+    temp = this->head;
+    int ctr = 0;
+    while(temp!=NULL)
+    {
+        ctr++;
+        temp = temp->next;
+    }
+    return ctr;
+}
+
+/*
+Stores the elements of the linked list in an array and
+returns the array
+*/
+array LinkedList::toArray()
+{
+    int *res_arr, res_arr_ind=0;
+    array arrObj;
+    Node *temp;
+    temp = this->head;
+    res_arr = (int *)malloc((this->size()) * sizeof(int));
+    while(temp!=NULL)
+    {
+        res_arr[res_arr_ind++] = temp->data;
+        temp = temp->next;
+    }
+    arrObj.arr = res_arr;
+    arrObj.size = this->size();
+    return arrObj;
+}
+
+/*
+Returns a string containing all of the elements in the list in
+proper sequence (from first to last), each element is separated
+by commas and the string is enclosed in square brackets
+*/
+std::string LinkedList::toString()
+{
+    std::string resStr = "[";
+    Node *temp;
     temp = this->head;
     while(temp!=NULL)
     {
-        next_node = temp->next;
-        free(temp);
-        temp = next_node;
+        resStr = resStr + std::to_string(temp->data)+", ";
+        temp = temp->next;
     }
-    this->head = NULL;
+    resStr += "]";
+    return resStr;
 }
-
