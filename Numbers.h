@@ -1,5 +1,6 @@
 #include <math.h>
 #include <string>
+#include <vector>
 #include <type_traits>
 typedef long long int LLI;
 
@@ -10,6 +11,7 @@ int gcd(LLI num1, LLI num2);
 int lcm(LLI num1, LLI num2);
 int max(int num1, int num2);
 int min(int num1, int num2);
+std::vector<int> getFactors(int num);
 template <typename T>
 std::string type(T ele);
 /*
@@ -110,3 +112,20 @@ std::string type(T ele)
         return "pointer";
 }
 
+std::vector<int> getFactors(int num)
+{
+    std::vector<int> res;
+    for(int i=1;i<=sqrt(num);i++)
+    {
+        if(num % i == 0)
+        {
+            if(num/i == i)
+                res.push_back(i);
+            else{
+                res.push_back(i);
+                res.push_back(num/i);
+            }
+        }
+    }
+    return res;
+}
