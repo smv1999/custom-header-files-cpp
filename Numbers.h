@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <type_traits>
+#include "ArrayList.h"
 typedef long long int LLI;
 
 LLI reverse(LLI num);
