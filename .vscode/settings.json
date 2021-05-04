@@ -1,5 +1,14 @@
 {
     "files.associations": {
-        "string": "cpp"
+        "string": "cpp",
+        "optional": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "memory": "cpp",
+        "new": "cpp",
+        "numeric": "cpp",
+        "*.tcc": "cpp",
+        "cmath": "cpp",
+        "utility": "cpp"
     }
 }

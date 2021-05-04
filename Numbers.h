@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <type_traits>
+#include <climits>
 #include "ArrayList.h"
 typedef long long int LLI;
 
