@@ -4,9 +4,31 @@
 #include <cctype>
 #include <vector>
 
-// Tasks - https://www.w3schools.com/python/python_ref_string.asp
-
 using namespace std;
+
+// Function prototypes
+bool contains(string s1, string s2);
+bool startswith(string s1, string s2, int start = 0, int end = 0);
+bool endswith(string s1, string s2, int start = 0, int end = 0);
+void capitalize(string &s);
+int count(string s1, string s2);
+int find(string s, char val);
+int find(string s, string val);
+int findLastOccurence(string s, char val);
+int findLastOccurence(string s, string val);
+bool isalnum(string s);
+bool isalpha(string s);
+bool isdigit(string s);
+bool islower(string s);
+bool isupper(string s);
+bool istitle(string s);
+void lower(string &s);
+void upper(string &s);
+vector<string> split(string s, char c = ' ');
+void swapcase(string &s);
+void title(string &s);
+void replace(string &s, char c, char k);
+void replace(string &s, string c, string k);
 
 /*
 Returns true if the string s2 is contained in s1
@@ -150,7 +172,7 @@ int find(string s, string val)
 }
 
 /*
-Searches (first occurrence) the string for a specified value and returns the position of where it was found.
+Searches (last occurrence) the string for a specified value and returns the position of where it was found.
 Function Overloading
 */
 int findLastOccurence(string s, char val)
@@ -246,6 +268,7 @@ bool isupper(string s)
 /*
 Returns true if the string follows the rules of a title
 */
+
 bool istitle(string s)
 {
 
@@ -269,6 +292,7 @@ bool istitle(string s)
 /*
 Converts the string passed as input into lowercase
 */
+
 void lower(string &s)
 {
     for (int index = 0; index < s.length(); index++)
@@ -280,6 +304,7 @@ void lower(string &s)
 /*
 Converts the string passed as input into uppercase
 */
+
 void upper(string &s)
 {
     for (int index = 0; index < s.length(); index++)
@@ -291,6 +316,7 @@ void upper(string &s)
 /*
 Splits the string at the specified separator and returns a vector of strings
 */
+
 vector<string> split(string s, char c = ' ')
 {
     vector<string> res;
@@ -314,6 +340,7 @@ vector<string> split(string s, char c = ' ')
 /*
 Swaps cases in a string, i.e., lowercase becomes uppercase and vice-versa.
 */
+
 void swapcase(string &s)
 {
     for (int index = 0; index < s.length(); index++)
@@ -328,6 +355,7 @@ void swapcase(string &s)
 /*
 Converts the first character of each word to uppercase
 */
+
 void title(string &s)
 {
     s[0] = toupper(s[0]);
@@ -342,7 +370,7 @@ void title(string &s)
 }
 
 /*
-Replaces the specified value with the specified value in the string
+Replaces the specified value in the string with the specified value passed as arguement
 */
 
 void replace(string &s, char c, char k)
