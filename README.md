@@ -11,7 +11,7 @@ This is a repository that contains Custom Utility Header Files created from scra
 
 
 ## Want to Contribute to this repository?
-Head over to [Contributing Guidelines](https://github.com/smv1999/dev_portal/blob/master/CONTRIBUTING.md) to know more!
+Head over to [Contributing Guidelines](https://github.com/smv1999/custom-header-files-cpp/blob/master/CONTRIBUTING.md) to know more!
 
 ## ❤️ Project Admin
 
