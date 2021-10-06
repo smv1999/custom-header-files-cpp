@@ -7,8 +7,7 @@ This is a repository that contains Custom Utility Header Files created from scra
 ![GitHub Repo stars](https://img.shields.io/github/stars/smv1999/custom-header-files-cpp?style=for-the-badge)
 ![Lines of code](https://img.shields.io/tokei/lines/github/smv1999/custom-header-files-cpp?style=for-the-badge)
 
-![alttext](https://raw.githubusercontent.com/smv1999/custom-header-files-cpp/master/mainimage.png)
-
+![custom-header-files-cpp](https://socialify.git.ci/smv1999/custom-header-files-cpp/image?font=Source%20Code%20Pro&forks=1&issues=1&language=1&owner=1&pattern=Brick%20Wall&pulls=1&stargazers=1&theme=Dark)
 
 ## Want to Contribute to this repository?
 Head over to [Contributing Guidelines](https://github.com/smv1999/custom-header-files-cpp/blob/master/CONTRIBUTING.md) to know more!
